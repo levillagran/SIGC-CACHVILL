@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+
+<title>Signin</title>
+
+	<!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
+
+	<!-- Custom styles for this template-->
+    <link href="css/signin.css" rel="stylesheet">
+
+
+</head>
+
+<body class="text-center">
+	<form class="form-signin" th:action="@{/logincheck}" method="POST">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<img class="mb-4" src="imgs/logo.jpg" alt="" width="92" height="72">
+		<h1 class="h3 mb-3 font-weight-normal"><i class="fa fa-sign-in" aria-hidden="true"></i>Autenticación</h1>
+		<label for="inputEmail" class="sr-only">Username</label> 
+		<input type="text" class="form-control" placeholder="Usuario" name="username" id="username" required autofocus/> 
+		<label for="inputPassword" class="sr-only">Password</label> 
+		<input type="password" class="form-control" placeholder="Clave" name="password"	id="password" required/>
+		
+		<div th:if="${error != null}" class="alert alert-danger" role="alert">Usuario o Clave invalido!</div>
+		<div th:if="${logout != null}" class="alert alert-info" role="alert">Salida	correcta!</div>
+		<div class="checkbox mb-3">
+    		<label>
+      			<input type="checkbox" value="remember-me"> Remember me
+    		</label>
+  		</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">
+			<i class="fa fa-sign-in-alt" aria-hidden="true"></i> Entrar
+		</button>
+		<div class="text-center">
+            <a class="d-block small mt-3" >Register an Account</a>
+			<!--th:href="@{/register}" -->
+            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+            <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+          </div>
+		
+	</form>
+</body>
+</html>
